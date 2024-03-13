@@ -59,7 +59,7 @@ raw_data文件夹里两个子目录,cat中5000张图片,dog中4000中图片
 # print("模型已保存")
 ```
 
-- 4、绘制loss曲线、准确率曲线
+- 4、绘制 loss曲线、准确率曲线
 ---
 ### 在net.py中
 
@@ -67,18 +67,20 @@ raw_data文件夹里两个子目录,cat中5000张图片,dog中4000中图片
 
 使用的是net_BN（添加了BatchNorm）,其他均被注释掉了。
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*net_BN的结构输出写在最后。*
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*net_BN的结构输出写在最后附录。*
 
 ---
 ### 在prepare_train.py中
 
-- 1、这里注释掉了加载预训练权重VGG16_Weights (vgg16-397923af.pth) 的行，
+- 1、写了dataset、dataloader、device、loss_function等一些其他训练准备工作的内容
+
+- 2、这里注释掉了加载预训练权重VGG16_Weights (vgg16-397923af.pth) 的行，
 如使用的话，解开下面这段的注释
 ```python
 # ## 如果想要使用vgg16的预训练权重,解开下面紧接着的这行的注释
 # net.load_state_dict(torch.load(r"vgg16-397923af.pth"))
 ```
-并且在net.py中的使用这个NET类
+并且在net.py中去使用下面的这个NET类
 ```python
 # # 早期没有normalization的net
 # class NET(nn.Module):
@@ -95,13 +97,11 @@ raw_data文件夹里两个子目录,cat中5000张图片,dog中4000中图片
 #         x = self.classifier(x)
 #         return x
 ```
-*vgg16-397923af.pth是用没有BN层的VGG16训练得到的，下载权重地址：https://download.pytorch.org/models/vgg16-397923af.pth*
+*vgg16-397923af.pth是用 没有添加BN的VGG16 训练得到的，权重下载地址：https://download.pytorch.org/models/vgg16-397923af.pth*
 
 
-*在https://pytorch.org/vision/stable/_modules/torchvision/models/vgg.html#VGG16_Weights 也可以找到 **VGG16_BN_Weights**，这样就可以继续使用net.py里的net_BN，但我没有试过下载并加载它*
+*PS：在https://pytorch.org/vision/stable/_modules/torchvision/models/vgg.html#VGG16_Weights 可以找到 **VGG16_BN_Weights**，这样就可以继续使用net.py里的net_BN，但我没有试过下载并加载它*
 
-
-- 2、写了dataset、dataloader、device、loss_function等一些其他训练准备工作的内容
 ---
 ### 在test.py中
 
@@ -123,7 +123,7 @@ model=torch.load(r" ")    # 在" "写训练完保存的网络权重地址,
 
 
 ---
-PS:
+## 附录:
 net_BN结构：
 ```bash
 NET(
