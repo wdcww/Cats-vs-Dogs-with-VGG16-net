@@ -24,10 +24,11 @@ matplotlib--3.5.1
 
 除此之外没有什么特别的包  
 
-&nbsp;&nbsp;&nbsp;*提供了一个my_env.yaml*
+&nbsp;&nbsp;&nbsp;*提供了一个my_env.yaml* 
 ```bash
 conda env create -f my_env.yml
 ```
+**注意：我本地的环境名字就叫“E:/my_env”**
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可以运行一下 test_your_GPU.py看看GPU是否可用
 ```bash
