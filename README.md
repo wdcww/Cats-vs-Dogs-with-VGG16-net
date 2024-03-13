@@ -1,35 +1,51 @@
 # 一些补充
 
-**此仓库：不使用VGG16的预训练权重、按照VGG16的结构定义net训练猫狗二分类任务**
+**此仓库介绍：不使用VGG16预训练权重、按照VGG16的结构定义net，去训练猫狗二分类任务**
 
+*原谅我没有上传训练的权重结果，麻烦大家去自己训练了*
 
+---
+参考的网络结构图如下
 
-## 使用的环境
+<img src="readme_pic/vgg16.png" alt="VGG16 Network" width="500" height="300" style="float:right">
+
+---
+加入BN, dropout=0.5, weight_decay=0.01, epochs=40 训练可视化结果
+![ ](readme_pic/plot_BN_WD0.01_DP0.5_kaggle.png)
+
+---
+## 使用的环境包
+
 主要是
 
 pytorch--2.0.1--py3.8_cuda11.8_cudnn8_0 
 
 matplotlib--3.5.1
 
-除此之外没有什么特别的包
+除此之外没有什么特别的包  
 
----
-*提供了一个my_env.yaml*
+&nbsp;&nbsp;&nbsp;*提供了一个my_env.yaml*
 ```bash
 conda env create -f my_env.yml
 ```
-可以运行一下 test_your_GPU.py看看GPU是否可用
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可以运行一下 test_your_GPU.py看看GPU是否可用
+```bash
+python test_your_GPU.py
+```
+---
 ## 数据集
 
 raw_data文件夹里两个子目录,cat中5000张图片,dog中4000中图片
 
+---
 ## 运行说明
 步骤：
 1. 第一步 txt.py 
 2. 第二步 train.py 
 3. 第三步 test.py
 
+---
 ### 在train.py中
 
 - 1、定义了优化器与学习率
@@ -44,16 +60,16 @@ raw_data文件夹里两个子目录,cat中5000张图片,dog中4000中图片
 ```
 
 - 4、绘制loss曲线、准确率曲线
-
+---
 ### 在net.py中
 
 - 从上到下依次定义了4个NET类：net_BN、net_LN、net_GN、没有normalization的net
 
 使用的是net_BN（添加了BatchNorm）,其他均被注释掉了。
 
-*net_BN的结构输出写在最后。*
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*net_BN的结构输出写在最后。*
 
-
+---
 ### 在prepare_train.py中
 
 - 1、这里注释掉了加载预训练权重VGG16_Weights (vgg16-397923af.pth) 的行，
@@ -82,10 +98,11 @@ raw_data文件夹里两个子目录,cat中5000张图片,dog中4000中图片
 *vgg16-397923af.pth是用没有BN层的VGG16训练得到的，下载权重地址：https://download.pytorch.org/models/vgg16-397923af.pth*
 
 
-*在https://pytorch.org/vision/stable/_modules/torchvision/models/vgg.html#VGG16_Weights 也可以找到 VGG16_BN_Weights，这样就可以继续使用net.py里的net_BN，但我没有试过下载并加载它*
+*在https://pytorch.org/vision/stable/_modules/torchvision/models/vgg.html#VGG16_Weights 也可以找到 **VGG16_BN_Weights**，这样就可以继续使用net.py里的net_BN，但我没有试过下载并加载它*
+
 
 - 2、写了dataset、dataloader、device、loss_function等一些其他训练准备工作的内容
-
+---
 ### 在test.py中
 
 - 1、可以打开当前目录的图片
@@ -106,6 +123,7 @@ model=torch.load(r" ")    # 在" "写训练完保存的网络权重地址,
 
 
 ---
+PS:
 net_BN结构：
 ```bash
 NET(
