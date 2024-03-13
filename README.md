@@ -63,11 +63,15 @@ raw_data文件夹里两个子目录,cat中5000张图片,dog中4000中图片
 ---
 ### 在net.py中
 
-- 从上到下依次定义了4个NET类：net_BN、net_LN、net_GN、没有normalization的net
+- 1、从上到下依次定义了4个NET类：net_BN、net_LN、net_GN、没有normalization的net
 
 使用的是net_BN（添加了BatchNorm）,其他均被注释掉了。
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*net_BN的结构输出写在最后附录。*
+- 2、因为是2分类，所以要让最后一层的Linear_out_features = 2 ，在prepare_train.py中添加了一层
+```python
+net.classifier.add_module("my", nn.Linear(1000, 2))
+```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*net_BN的结构输出写在最后附录，最后的 my 层1000->2*
 
 ---
 ### 在prepare_train.py中
@@ -186,6 +190,7 @@ NET(
     (9): BatchNorm1d(1000, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
     (10): ReLU(inplace=True)
     (11): Dropout(p=0.5, inplace=False)
+    (my): Linear(in_features=1000, out_features=2, bias=True)
   )
 )
 ```
