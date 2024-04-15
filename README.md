@@ -41,11 +41,9 @@ python test_your_GPU.py
 
 我曾使用的数据集是5000张cats，4000张dogs。
 把所有的这9000张图片做成datasets后，再去按照 train:validation=4:1去训练。
+这9000张图片在raw_data.zip中，请解压使用。
 
-对不起，我不得不将两个子目录中的文件数量都截断到1000个。
-所以，raw_data文件夹里两个子目录,cat中1000张图片,dog中1000中图片
-
-而最后的预测(test)，则是随便找了两张图片。目录中的test1.png和test2.png
+最后的预测(test)，则是随便找了两张图片。目录中的test1.png和test2.png
 
 ---
 ## 运行说明
