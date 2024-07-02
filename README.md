@@ -3,7 +3,7 @@
 **此仓库介绍：不使用VGG16预训练权重、按照VGG16的结构定义net，去训练猫狗二分类任务**
 
 *raw_data.zip是一个大文件，约193MB（已使用使用LFS追踪），git clone可能会有点慢。
-如果自己有从别的地方下载数据集，可以Download Zip方便下载，Download Zip不会下载到raw_data.zip*
+如果自己有从别的地方下载数据集，可以Download Zip只下载源码，Download Zip不会下载到raw_data.zip*
 
 *原谅我没有上传训练的权重结果，麻烦大家去自己训练了*
 
@@ -21,15 +21,18 @@
 ---
 ## 使用的环境包
 
-主要是
+主要是需要安装pytorch，matplotlib。
+
+我的版本是:
 
 pytorch--2.0.1--py3.8_cuda11.8_cudnn8_0 
 
 matplotlib--3.5.1
 
-除此之外没有什么特别的包  
+除此之外不需要其它特别的包。 
 
-&nbsp;&nbsp;&nbsp;*提供了一个my_env.yaml* 
+*如果你想要和我使用完全一样的环境，*
+&nbsp;&nbsp;&nbsp;*我也提供了一个my_env.yaml* 
 ```bash
 conda env create -f my_env.yml
 ```
@@ -44,16 +47,19 @@ python test_your_GPU.py
 
 我曾使用的数据集是5000张cats，4000张dogs。
 把所有的这9000张图片做成datasets后，再去按照 train:validation=4:1去训练。
-这9000张图片在raw_data.zip中，请解压使用。
+这9000张图片在raw_data.zip，如果得到此zip请解压使用。
 
 最后的预测(test)，则是随便找了两张图片。目录中的test1.png和test2.png
 
 ---
 ## 运行说明
 步骤：
-1. 第一步 txt.py 
-2. 第二步 train.py 
-3. 第三步 test.py
+1. 第一步 运行 txt.py 
+2. 第二步 运行 train.py
+
+如需推理:
+
+去运行test.py
 
 ---
 ### 在train.py中
