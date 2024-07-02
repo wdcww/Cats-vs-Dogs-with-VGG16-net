@@ -2,7 +2,7 @@
 
 **此仓库介绍：不使用VGG16预训练权重、按照VGG16的结构定义net，去训练猫狗二分类任务**
 
-*raw_data.zip是一个大文件，约193MB（已使用使用LFS追踪），git clone可能会有点慢。
+*raw_data.zip是一个大文件，约193MB（已使用LFS追踪），git clone可能会有点慢。
 如果自己有从别的地方下载数据集，可以Download Zip只下载源码，Download Zip不会下载到raw_data.zip*
 
 *原谅我没有上传训练的权重结果，麻烦大家去自己训练了*
