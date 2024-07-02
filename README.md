@@ -38,7 +38,9 @@ matplotlib--3.5.1
 conda env create -f my_env.yml
 ```
 
-*运行一下 test_your_GPU.py看看GPU是否可用*
+---
+## GPU是否可用
+*运行一下test_your_GPU.py*
 ```bash
 python test_your_GPU.py
 ```
